@@ -21,6 +21,7 @@ public class Tutor {
 
     @TableField(exist = false)
     private List<Student> students;
+    public Tutor(){ }
 
     public String getTutorId() {
         return tutorId;

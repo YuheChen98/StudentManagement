@@ -23,8 +23,10 @@ public interface ProgrammeMapper extends BaseMapper<Programme> {
                     @Result(column = "fees_and_funding",property = "feesAndFunding"),
                     @Result(column = "programme_id",property = "students",javaType = List.class,
                             many = @Many(select = "com.example.studentmanagement.mapper.UserMapper.StudentMapper.selectByProgrammeId")),
+                    @Result(column = "programme_id",property = "tutors",javaType = List.class,
+                            many = @Many(select = "com.example.studentmanagement.mapper.UserMapper.TutorMapper.selectByProgrammeId")),
                     @Result(column = "programme_id",property = "programmeModules",javaType = List.class,
-                            many = @Many(select = "com.example.studentmanagement.service.ProgrammeService.ProgrammeService.getProgrammeModules")
+                            many = @Many(select = "com.example.studentmanagement.mapper.ProgrammeMapper.ProgrammeModuleMapper.selectByProgrammeId")
                     )
             }
     )

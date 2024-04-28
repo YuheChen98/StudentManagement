@@ -3,7 +3,7 @@ package com.example.studentmanagement.entity.Programme;
 import com.baomidou.mybatisplus.annotation.TableId;
 
 public class ProgrammeModule {
-    @TableId(value = "programme_id")
+    @TableId
     private String programmeId;
  //   @TableId(value = "module_id")
     private String moduleId;

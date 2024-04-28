@@ -17,7 +17,7 @@ public interface StudentMapper extends BaseMapper<Student> {
     @Select("select count(*) from student where student_id = #{studentId}")
     int countStudentById(String studentId);
 
-    @Select("select * from student where tutorId = #{tutorId}")
+    @Select("select * from student where tutor_id = #{tutorId}")
     List<Student> selectByTutorId(String tutorId);
     @Select("select * from student where programme_id = #{programmeId}")
     List<Student> selectByProgrammeId(String programmeId);
