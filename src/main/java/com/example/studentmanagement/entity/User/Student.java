@@ -1,15 +1,17 @@
 package com.example.studentmanagement.entity.User;
+import com.example.studentmanagement.entity.Programme.Programme;
 
 import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 
 import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
+@TableName("Student")
 public class Student {
+    @TableId
     private String studentId;
     private String password;
+
     private String firstName;
     private String lastName;
     private String email;
@@ -17,8 +19,10 @@ public class Student {
     private Date startTime;
     private Date endTime;
     private Boolean ifWithdraw;
-    private String tutorId;
-    private String programmeId;
+    @TableField(exist = false)
+    private Tutor tutor;
+    @TableField(exist = false)
+    private Programme programme;
 
     public Student() {
     }
@@ -95,20 +99,20 @@ public class Student {
         this.ifWithdraw = ifWithdraw;
     }
 
-    public String getTutorId() {
-        return tutorId;
+    public Tutor getTutor() {
+        return tutor;
     }
 
-    public void setTutorId(String tutorId) {
-        this.tutorId = tutorId;
+    public void setTutor(Tutor tutor) {
+        this.tutor = tutor;
     }
 
-    public String getProgrammeId() {
-        return programmeId;
+    public Programme getProgramme() {
+        return programme;
     }
 
-    public void setProgrammeId(String programmeId) {
-        this.programmeId = programmeId;
+    public void setProgramme(Programme programme) {
+        this.programme = programme;
     }
 }
 

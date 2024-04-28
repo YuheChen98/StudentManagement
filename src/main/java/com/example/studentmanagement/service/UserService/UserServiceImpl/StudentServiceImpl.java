@@ -22,14 +22,13 @@ public class StudentServiceImpl implements StudentService {
             }
         }
         student.setStudentId(studentId);
-        int i = studentMapper.insert(student);
+        int i = studentMapper.add(student);
         if (i > 0) {
             return student;
         } else {
             return null;
         }
     }
-
 
     private String generateStudentId() {
         Random random = new Random();

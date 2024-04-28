@@ -1,5 +1,6 @@
 package com.example.studentmanagement.controller.UserController;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.example.studentmanagement.entity.User.Student;
 import com.example.studentmanagement.mapper.UserMapper.StudentMapper;
 import com.example.studentmanagement.service.UserService.StudentService;
@@ -19,18 +20,25 @@ public class StudentController {
 
     @Operation(summary = "查询全部学生列表")
     @GetMapping("/student")
-    public List student(){
-        List<Student> students = studentMapper.selectList(null);
-        return students;
+    public List student() {
+        return studentMapper.selectAllStudentProgrammeTutor();
     }
+//    public List student(){
+//        List<Student> students = studentMapper.selectList(null);
+//        return students;
+//    }
+
 
     @Operation(summary = "根据id查询学生信息")
     @GetMapping("/student/{studentId}")
+//    public List<Student> findByName(){
+//        QueryWrapper<Student> queryWrapper = new QueryWrapper<>();
+//        queryWrapper.
+//    }
     public Student getStudentById(@PathVariable String studentId) {
         Student student = studentMapper.selectById(studentId);
         return student;
     }
-
 
     @Operation(summary = "创建学生")
     @PostMapping("/student")
