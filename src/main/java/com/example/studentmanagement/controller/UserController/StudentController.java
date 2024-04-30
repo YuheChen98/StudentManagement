@@ -1,6 +1,4 @@
 package com.example.studentmanagement.controller.UserController;
-
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.example.studentmanagement.entity.User.Student;
 import com.example.studentmanagement.mapper.UserMapper.StudentMapper;
 import com.example.studentmanagement.service.UserService.StudentService;
@@ -21,22 +19,18 @@ public class StudentController {
     @Operation(summary = "查询全部学生列表")
     @GetMapping("/student")
     public List student() {
-        return studentMapper.selectAllStudentProgrammeTutor();
+        return studentMapper.selectAllStudent();
     }
-//    public List student(){
-//        List<Student> students = studentMapper.selectList(null);
-//        return students;
-//    }
 
-
+    @Operation(summary = "根据id或name查询学生信息列表")
+    @GetMapping("/student/search/{query}")
+    public List<Student> searchStudent(@PathVariable String query){
+        return studentService.searchStudent(query);
+    }
     @Operation(summary = "根据id查询学生信息")
     @GetMapping("/student/{studentId}")
-//    public List<Student> findByName(){
-//        QueryWrapper<Student> queryWrapper = new QueryWrapper<>();
-//        queryWrapper.
-//    }
     public Student getStudentById(@PathVariable String studentId) {
-        Student student = studentMapper.selectById(studentId);
+        Student student = studentMapper.selectByStudentId(studentId);
         return student;
     }
 
@@ -56,5 +50,21 @@ public class StudentController {
             return null;
         }
     }
+    @Operation(summary = "分配tutor")
+    @PutMapping("/student/tutor")
+    public Student selectTutor(@RequestBody Student student){
+        return studentService.selectTutor(student);
+    }
 
+
+    @Operation(summary = "删除学生")
+    @DeleteMapping("/student/{studentId}")
+    public Student deleteStudent(@RequestBody Student student){
+    int i = studentMapper.deleteById(student);
+        if ( i > 0){
+            return student;
+        } else {
+            return null;
+        }
+    }
 }

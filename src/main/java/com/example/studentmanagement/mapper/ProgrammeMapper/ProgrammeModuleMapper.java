@@ -11,7 +11,7 @@ import java.util.List;
 @Mapper
 public interface ProgrammeModuleMapper extends BaseMapper<ProgrammeModule> {
 
-    @Select("select * from programmeModule where programme_id = #{programmeId}")
+    @Select("select * from programme_module where programme_id = #{programmeId}")
     List<ProgrammeModule> selectByProgrammeId(String programmeId);
 
 //    @Select("select * from programmeModule where module_id = #{moduleId}")

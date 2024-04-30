@@ -16,14 +16,14 @@ public class ModuleController {
     @Operation(summary = "查询全部module列表")
     @GetMapping("/module")
     public List module() {
-        return moduleMapper.selectList(null);
+        return moduleMapper.selectAllModule();
     }
 
 
     @Operation(summary = "根据id查询module")
     @GetMapping("/module/{moduleId}")
     public Module getModuleById(@PathVariable String moduleId) {
-        Module module = moduleMapper.selectById(moduleId);
+        Module module = moduleMapper.selectByModuleId(moduleId);
         return module;
     }
 

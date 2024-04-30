@@ -1,5 +1,6 @@
 package com.example.studentmanagement.controller.UserController;
 
+
 import com.example.studentmanagement.entity.User.Student;
 import com.example.studentmanagement.entity.User.Tutor;
 import com.example.studentmanagement.mapper.UserMapper.TutorMapper;
@@ -45,7 +46,15 @@ public class TutorController {
             return null;
         }
     }
-//    @Operation(summary = "给tutor分配学生")
-//    @PostMapping("/tutor/{tutorId}/assign-student")
-//    public
+    @Operation(summary = "删除tutor")
+    @DeleteMapping("/tutpr/{tutorId}")
+    public Tutor deleteTutor(@RequestBody Tutor tutor){
+        int i = tutorMapper.deleteById(tutor);
+        if ( i > 0){
+            return tutor;
+        } else {
+            return null;
+        }
+    }
+
 }

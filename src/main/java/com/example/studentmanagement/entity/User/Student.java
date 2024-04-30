@@ -4,8 +4,11 @@ import com.example.studentmanagement.entity.Programme.Programme;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.example.studentmanagement.entity.Programme.ProgrammeModule;
 
 import java.util.Date;
+import java.util.List;
+
 @TableName("Student")
 public class Student {
     @TableId
@@ -23,6 +26,8 @@ public class Student {
     private Tutor tutor;
     @TableField(exist = false)
     private Programme programme;
+    @TableField(exist = false)
+    private List<ProgrammeModule> programmeModules;
 
     public Student() {
     }
@@ -113,6 +118,14 @@ public class Student {
 
     public void setProgramme(Programme programme) {
         this.programme = programme;
+    }
+
+    public List<ProgrammeModule> getProgrammeModules() {
+        return programmeModules;
+    }
+
+    public void setProgrammeModules(List<ProgrammeModule> programmeModules) {
+        this.programmeModules = programmeModules;
     }
 }
 

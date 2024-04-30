@@ -24,7 +24,7 @@ public class ProgrammeService {
         List<ProgrammeModule> programmeModules = programmeModuleMapper.selectByProgrammeId(programmeId);
         List<Module> modules = new ArrayList<>();
         for (ProgrammeModule programmeModule : programmeModules) {
-            Module module = moduleMapper.selectById(programmeModule.getModuleId());
+            Module module = moduleMapper.selectByModuleId(programmeModule.getModuleId());
             modules.add(module);
         }
         return modules;

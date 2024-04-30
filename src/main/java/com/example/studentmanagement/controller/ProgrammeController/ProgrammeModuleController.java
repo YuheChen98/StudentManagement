@@ -14,11 +14,11 @@ public class ProgrammeModuleController {
     @Autowired
     private ProgrammeModuleMapper programmeModuleMapper;
     @Operation(summary = "在programme中添加module")
-    @PostMapping("/programme/{programmeId}/module/{moduleId}")
-    public ProgrammeModuleMapper add(@RequestBody ProgrammeModule programmeModule){
+    @PostMapping("/programme/module")
+    public ProgrammeModule add(@RequestBody ProgrammeModule programmeModule){
         int i = programmeModuleMapper.insert(programmeModule);
         if (i>0) {
-            return programmeModuleMapper;
+            return programmeModule;
         } else {
             return null;
         }

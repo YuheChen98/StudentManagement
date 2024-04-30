@@ -2,6 +2,7 @@ package com.example.studentmanagement.entity.Programme;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.example.studentmanagement.entity.User.Lecturer;
 
 import java.util.Date;
 import java.util.List;
@@ -12,9 +13,8 @@ public class Module {
     private String syllabus;
     private Date term;
     private Date timeEveryWeek;
-//    @TableField(exist = false)
-//    private List<ProgrammeModule> moduleProgramme;
-
+    @TableField(exist = false)
+    private Lecturer lecturer;
     public Module(){
     }
 
@@ -51,11 +51,11 @@ public class Module {
         this.timeEveryWeek = timeEveryWeek;
     }
 
-//    public List<ProgrammeModule> getModuleProgramme() {
-//        return moduleProgramme;
-//    }
-//
-//    public void setModuleProgramme(List<ProgrammeModule> moduleProgramme) {
-//        this.moduleProgramme = moduleProgramme;
-//    }
+    public Lecturer getLecturer() {
+        return lecturer;
+    }
+
+    public void setLecturer(Lecturer lecturer) {
+        this.lecturer = lecturer;
+    }
 }
