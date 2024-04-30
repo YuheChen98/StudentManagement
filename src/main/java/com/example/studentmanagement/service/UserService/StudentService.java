@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.example.studentmanagement.entity.User.Student;
 import com.example.studentmanagement.mapper.UserMapper.StudentMapper;
 import com.example.studentmanagement.mapper.UserMapper.TutorMapper;
+import com.example.studentmanagement.utils.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -54,18 +55,17 @@ public class StudentService {
 
 
     private TutorMapper tutorMapper;
-    public Student selectTutor(Student student) {
+    public Result selectTutor(Student student) {
         int i = tutorMapper.countTutorById(student.getTutor().getTutorId());
         if(student.getProgramme().getProgrammeId() == student.getTutor().getProgramme().getProgrammeId()){
             if (i >= 15) {
-                return null;
+                return Result.error().message("A tutor can only have at most 15 students");
             }
             i = studentMapper.updateById(student);
             if (i > 0) {
-                return student;
+                return Result.ok().data("student",student);
             }
         }
-        return null;
-    }
+        return Result.error().message("Assigned failed");    }
 
 }

@@ -4,6 +4,9 @@ public class LoginRequest {
     private String userId;
     private String password;
 
+    private String role;
+
+
     public LoginRequest(){ }
 
     public String getUserId() {
@@ -22,5 +25,11 @@ public class LoginRequest {
         this.password = password;
     }
 
+    public String getRole() {
+        return role;
+    }
 
+    public void setRole(String role) {
+        this.role = role;
+    }
 }
