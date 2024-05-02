@@ -14,19 +14,19 @@ public class JwtUtils {
         Date now = new Date();
         Date expiration = new Date(now.getTime() + 1000 * expire);
         return Jwts.builder()
-                .setHeaderParam("type","JWT")
+                .setHeaderParam("typ","JWT")
                 .setSubject(user.getUserId())
                 .claim("role",user.getRole())
                 .setIssuedAt(now)
                 .setExpiration(expiration)
-                .signWith(SignatureAlgorithm.HS512,secret)
+                .signWith(SignatureAlgorithm.HS512,secret.getBytes())
                 .compact();
     }
 
     public static Claims getClaimsByToken(String token){
         return Jwts.parser()
-                .setSigningKey(secret)
-                .parseClaimsJwt(token)
+                .setSigningKey(secret.getBytes())
+                .parseClaimsJws(token)
                 .getBody();
     }
     public static String extractRoleFromToken(String token) {

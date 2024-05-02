@@ -4,19 +4,19 @@ import com.baomidou.mybatisplus.annotation.TableId;
 
 public class Administrator {
     @TableId
-    private String administratorId;
+    private String adminId;
     private String password;
     private String firstName;
     private String lastName;
     private String email;
     public Administrator(){}
 
-    public String getAdministratorId() {
-        return administratorId;
+    public String getAdminId() {
+        return adminId;
     }
 
-    public void setAdministratorId(String administratorId) {
-        this.administratorId = administratorId;
+    public void setAdminId(String adminId) {
+        this.adminId = adminId;
     }
 
     public String getPassword() {

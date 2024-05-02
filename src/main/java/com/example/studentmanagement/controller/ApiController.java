@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api")
+@CrossOrigin
 public class ApiController {
     @Autowired
     private StudentMapper studentMapper;
@@ -30,28 +31,28 @@ public class ApiController {
         String userId = loginRequest.getUserId();
         String password = loginRequest.getPassword();
 
-        if(loginRequest.getRole().equals("STUDENT")){
+        if(loginRequest.getRole().equals("ROLE_STUDENT")){
             Student student = studentMapper.selectById(userId);
             if (student != null && student.getPassword().equals(password)) {
                 String token = JwtUtils.generateToken(loginRequest);
                 return Result.ok().data("token",token);
             }
         }
-        if(loginRequest.getRole().equals("TUTOR")){
+        if(loginRequest.getRole().equals("ROLE_TUTOR")){
             Tutor tutor = tutorMapper.selectById(userId);
             if (tutor != null && tutor.getPassword().equals(password)) {
                 String token = JwtUtils.generateToken(loginRequest);
                 return Result.ok().data("token",token);
             }
         }
-        if(loginRequest.getRole().equals("ADMIN")){
+        if(loginRequest.getRole().equals("ROLE_ADMIN")){
             Administrator administrator = administratorMapper.selectById(userId);
             if (administrator != null && administrator.getPassword().equals(password)) {
                 String token = JwtUtils.generateToken(loginRequest);
                 return Result.ok().data("token",token);
             }
         }
-        if(loginRequest.getRole().equals("LECTURER")){
+        if(loginRequest.getRole().equals("ROLE_LECTURER")){
             Lecturer lecturer = lecturerMapper.selectById(userId);
             if (lecturer != null && lecturer.getPassword().equals(password)) {
                 String token = JwtUtils.generateToken(loginRequest);
@@ -60,12 +61,12 @@ public class ApiController {
         }
         return Result.error().message("Invalid userId or password");
     }
-//    @GetMapping("/info")
-//    public Result info(String token) {
-//        String userId = JwtUtils.getClaimsByToken(token).getSubject();
-//        return Result.ok().data("userId",userId);
-//
-//    }
+    @GetMapping("/info")
+    public Result info(String token) {
+        String userId = JwtUtils.getClaimsByToken(token).getSubject();
+        return Result.ok().data("userId",userId);
+
+    }
 
     @PostMapping("/logout")
     public Result logout(){ return Result.ok();}

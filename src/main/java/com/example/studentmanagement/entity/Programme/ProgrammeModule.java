@@ -5,7 +5,6 @@ import com.baomidou.mybatisplus.annotation.TableId;
 public class ProgrammeModule {
     @TableId
     private String programmeId;
- //   @TableId(value = "module_id")
     private String moduleId;
 
     public  ProgrammeModule(){ }

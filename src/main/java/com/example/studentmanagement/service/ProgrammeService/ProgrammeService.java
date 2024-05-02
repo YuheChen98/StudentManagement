@@ -5,8 +5,10 @@ import com.example.studentmanagement.entity.Programme.ProgrammeModule;
 import com.example.studentmanagement.mapper.ProgrammeMapper.ModuleMapper;
 import com.example.studentmanagement.mapper.ProgrammeMapper.ProgrammeMapper;
 import com.example.studentmanagement.mapper.ProgrammeMapper.ProgrammeModuleMapper;
+import com.example.studentmanagement.utils.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,6 +31,7 @@ public class ProgrammeService {
         }
         return modules;
     }
+
 
   //  public ProgrammeModule selectModule(String programmeId,String moduleId){
 //        ProgrammeModule programmeModule = new ProgrammeModule();

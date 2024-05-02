@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.Select;
 
 @Mapper
 public interface AdministratorMapper extends BaseMapper<Administrator> {
-    @Select("select count(*) from administrator where administrator_id = #{administratorId}")
-    int countAdministratorById(String administratorId);
+    @Select("select count(*) from administrator where admin_id = #{adminId}")
+    int countAdministratorById(String adminId);
 
 }

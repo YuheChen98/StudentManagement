@@ -11,10 +11,12 @@ public class Module {
     @TableId
     private String moduleId;
     private String syllabus;
-    private Date term;
-    private Date timeEveryWeek;
+    private int semester;
+    private String timeEveryWeek;
     @TableField(exist = false)
     private Lecturer lecturer;
+    @TableField(exist = false)
+    private List<ExamCoursework> examCourseworks;
     public Module(){
     }
 
@@ -35,19 +37,19 @@ public class Module {
         this.syllabus = syllabus;
     }
 
-    public Date getTerm() {
-        return term;
+    public int getSemester() {
+        return semester;
     }
 
-    public void setTerm(Date term) {
-        this.term = term;
+    public void setSemester(int semester) {
+        this.semester = semester;
     }
 
-    public Date getTimeEveryWeek() {
+    public String getTimeEveryWeek() {
         return timeEveryWeek;
     }
 
-    public void setTimeEveryWeek(Date timeEveryWeek) {
+    public void setTimeEveryWeek(String timeEveryWeek) {
         this.timeEveryWeek = timeEveryWeek;
     }
 
@@ -57,5 +59,13 @@ public class Module {
 
     public void setLecturer(Lecturer lecturer) {
         this.lecturer = lecturer;
+    }
+
+    public List<ExamCoursework> getExamCourseworks() {
+        return examCourseworks;
+    }
+
+    public void setExamCourseworks(List<ExamCoursework> examCourseworks) {
+        this.examCourseworks = examCourseworks;
     }
 }

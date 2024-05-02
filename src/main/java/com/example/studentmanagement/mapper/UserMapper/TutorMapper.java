@@ -15,6 +15,11 @@ public interface TutorMapper extends BaseMapper<Tutor> {
     @Select("select * from tutor where programme_id = #{programmeId}")
     List<Tutor> selectByProgrammeId(String programmeId);
 
+    @Insert("insert into tutor values (#{tutorId},#{information},#{programme.programmeId},#{password},#{firstName},#{lastName},#{email})")
+    int insert(Tutor tutor);
+
+    @Update("update tutor set information=#{information},programme_id=#{programme.programmeId},password=#{password},first_name=#{firstName},last_name=#{lastName},email=#{email} where tutor_id = #{tutorId}")
+    int updateTutor(Tutor tutor);
     @Select("select * from tutor")
     @Results(
             {
@@ -32,4 +37,21 @@ public interface TutorMapper extends BaseMapper<Tutor> {
             }
     )
     List<Tutor> selectAllTutor();
+    @Select("select * from tutor where tutor_id=#{tutorId}")
+    @Results(
+            {
+                    @Result(column = "tutor_id",property = "tutorId"),
+                    @Result(column = "information",property = "information"),
+                    @Result(column = "password",property = "password"),
+                    @Result(column = "first_name",property = "firstName"),
+                    @Result(column = "last_name",property = "lastName"),
+                    @Result(column = "email",property = "email"),
+                    @Result(column = "programme_id",property = "programme",javaType = Programme.class,
+                            one = @One(select = "com.example.studentmanagement.mapper.ProgrammeMapper.ProgrammeMapper.selectById")),
+                    @Result(column = "tutor_id",property = "students",javaType = List.class,
+                            many = @Many(select = "com.example.studentmanagement.mapper.UserMapper.StudentMapper.selectByTutorId")
+                    )
+            }
+    )
+    Tutor selectById(String tutorId);
 }

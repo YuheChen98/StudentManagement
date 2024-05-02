@@ -17,7 +17,9 @@ public interface ModuleMapper extends BaseMapper<Module> {
                     @Result(column = "term",property = "term"),
                     @Result(column = "time_every_week",property = "timeEveryWeek"),
                     @Result(column = "lecturer_id",property = "lecturer",javaType = Lecturer.class,
-                            one = @One(select = "com.example.studentmanagement.mapper.UserMapper.LecturerMapper.selectById")
+                            one = @One(select = "com.example.studentmanagement.mapper.UserMapper.LecturerMapper.selectById")),
+                    @Result(column = "module_id",property = "examCourseworks",javaType = List.class,
+                            many = @Many(select = "com.example.studentmanagement.mapper.ProgrammeMapper.ExamCourseworkMapper.selectByModuleId")
                     )
             }
     )
@@ -28,10 +30,12 @@ public interface ModuleMapper extends BaseMapper<Module> {
             {
                     @Result(column = "module_id",property = "moduleId"),
                     @Result(column = "syllabus",property = "syllabus"),
-                    @Result(column = "term",property = "term"),
+                    @Result(column = "semester",property = "semester"),
                     @Result(column = "time_every_week",property = "timeEveryWeek"),
                     @Result(column = "lecturer_id",property = "lecturer",javaType = Lecturer.class,
-                            one = @One(select = "com.example.studentmanagement.mapper.UserMapper.LecturerMapper.selectById")
+                            one = @One(select = "com.example.studentmanagement.mapper.UserMapper.LecturerMapper.selectById")),
+                    @Result(column = "module_id",property = "examCourseworks",javaType = List.class,
+                            many = @Many(select = "com.example.studentmanagement.mapper.ProgrammeMapper.ExamCourseworkMapper.selectByModuleId")
                     )
             }
     )

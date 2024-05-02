@@ -1,6 +1,7 @@
 package com.example.studentmanagement.service.UserService;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.example.studentmanagement.entity.Programme.Programme;
 import com.example.studentmanagement.entity.User.Student;
 import com.example.studentmanagement.mapper.UserMapper.StudentMapper;
 import com.example.studentmanagement.mapper.UserMapper.TutorMapper;
@@ -54,14 +55,15 @@ public class StudentService {
     }
 
 
+    @Autowired
     private TutorMapper tutorMapper;
     public Result selectTutor(Student student) {
         int i = tutorMapper.countTutorById(student.getTutor().getTutorId());
-        if(student.getProgramme().getProgrammeId() == student.getTutor().getProgramme().getProgrammeId()){
+        if(student.getProgramme().getProgrammeId().equals(student.getTutor().getProgramme().getProgrammeId())){
             if (i >= 15) {
                 return Result.error().message("A tutor can only have at most 15 students");
             }
-            i = studentMapper.updateById(student);
+            i = studentMapper.updateTutor(student);
             if (i > 0) {
                 return Result.ok().data("student",student);
             }

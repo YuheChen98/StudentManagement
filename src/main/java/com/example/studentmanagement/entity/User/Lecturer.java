@@ -2,6 +2,7 @@ package com.example.studentmanagement.entity.User;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.example.studentmanagement.entity.Programme.Module;
 
 import java.util.List;
 

@@ -16,6 +16,11 @@ public interface StudentMapper extends BaseMapper<Student> {
     @Insert("insert into student values (#{studentId},#{tutor.tutorId},#{ifWithdraw},#{information},#{startTime},#{endTime},#{programme.programmeId},#{password},#{firstName},#{lastName},#{email})")
     int add(Student student);
 
+    @Update("update student set tutor_id=#{tutor.tutorId} where student_id=#{studentId}")
+    int updateTutor(Student student);
+    @Update("update student set programme_id=#{programme.programmeId},if_withdraw=#{ifWithdraw},information=#{information},start_time=#{startTime},end_time=#{endTime},programme_id=#{programme.programmeId},password=#{password},first_name=#{firstName},last_name=#{lastName},email=#{email} where student_id=#{studentId}")
+    int updateStudentAndProgramme(Student student);
+
     //根据id查找该学生
     @Select("select count(*) from student where student_id = #{studentId}")
     int countStudentById(String studentId);

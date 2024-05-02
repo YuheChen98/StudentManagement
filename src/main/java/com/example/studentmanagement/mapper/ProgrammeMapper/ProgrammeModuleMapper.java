@@ -14,8 +14,8 @@ public interface ProgrammeModuleMapper extends BaseMapper<ProgrammeModule> {
     @Select("select * from programme_module where programme_id = #{programmeId}")
     List<ProgrammeModule> selectByProgrammeId(String programmeId);
 
-//    @Select("select * from programmeModule where module_id = #{moduleId}")
-//    List<ProgrammeModule> selectByModuleId(String moduleId);
+    @Select("select * from programmeModule where module_id = #{moduleId}")
+    List<ProgrammeModule> selectByModuleId(String moduleId);
 
 //    @Insert("insert into programmeModule values ({module.moduleId},{programme.programmeId})")
 //    int addProgrammeModule(ProgrammeModule programmeModule);

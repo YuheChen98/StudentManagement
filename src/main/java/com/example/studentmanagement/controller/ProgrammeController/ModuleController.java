@@ -2,6 +2,7 @@ package com.example.studentmanagement.controller.ProgrammeController;
 
 import com.example.studentmanagement.entity.Programme.Module;
 import com.example.studentmanagement.mapper.ProgrammeMapper.ModuleMapper;
+import com.example.studentmanagement.utils.Result;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin
 public class ModuleController {
     @Autowired
     private ModuleMapper moduleMapper;
@@ -29,23 +31,23 @@ public class ModuleController {
 
     @Operation(summary = "创建module")
     @PostMapping("/module")
-    public Module add(@RequestBody Module module){
+    public Result add(@RequestBody Module module){
         int i = moduleMapper.insert(module);
         if (i>0) {
-            return module;
+            return Result.ok().data("module",module);
         } else {
-            return null;
+            return Result.error().message("Create module failed");
         }
     }
 
     @Operation(summary = "更新module信息")
-    @PutMapping("/module/{moduleId}")
-    public Module updateModule(@RequestBody Module module){
+    @PutMapping("/module")
+    public Result updateModule(@RequestBody Module module){
         int i = moduleMapper.updateById(module);
         if ( i > 0){
-            return module;
+            return Result.ok().data("module",module);
         } else {
-            return null;
+            return Result.error().message("Update module failed");
         }
     }
 }

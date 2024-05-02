@@ -6,11 +6,13 @@ import com.example.studentmanagement.service.UserService.LecturerService;
 import com.example.studentmanagement.utils.Result;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@CrossOrigin
 public class LecturerController {
     @Autowired
     private LecturerMapper lecturerMapper;
@@ -18,7 +20,8 @@ public class LecturerController {
     private LecturerService lecturerService;
 
     @Operation(summary = "创建lecturer")
-    @PostMapping("/lecturer")
+    @PostMapping("/admin/lecturer")
+    @PreAuthorize("hasRole('ADMIN')")
     public Result add(@RequestBody Lecturer lecturer){
         Lecturer newLecturer = lecturerService.createLecturer(lecturer);
         if (newLecturer != null){
@@ -28,24 +31,28 @@ public class LecturerController {
         }
     }
     @Operation(summary = "查询全部lecturer列表")
-    @GetMapping("/lecturer")
+    @GetMapping("/admin/lecturer")
+    @PreAuthorize("hasRole('ADMIN')")
     public List lecturer() {
         return lecturerMapper.selectAllLecturer();
     }
 
     @Operation(summary = "根据id或name查询lecturer信息列表")
-    @GetMapping("/lecturer/search/{query}")
+    @GetMapping("/admin/lecturer/{query}")
+    @PreAuthorize("hasRole('ADMIN')")
     public List<Lecturer> searchLecturer(@PathVariable String query){
         return lecturerService.searchLecturer(query);
     }
 
     @Operation(summary = "查询单个lecturer信息")
-    @GetMapping("/lecturerInfo")
+    @GetMapping("/admin/lecturerInfo")
+    @PreAuthorize("hasRole('ADMIN')")
     public Lecturer getLecturerById(@RequestBody Lecturer lecturer) {
         return lecturerMapper.selectById(lecturer.getLecturerId());
     }
     @Operation(summary = "更新lecturer信息")
-    @PutMapping("/lecturer")
+    @PutMapping("/admin/lecturer")
+    @PreAuthorize("hasRole('ADMIN')")
     public Result updateLecturer(@RequestBody Lecturer lecturer){
         int i = lecturerMapper.updateById(lecturer);
         if ( i > 0){
@@ -55,7 +62,8 @@ public class LecturerController {
         }
     }
     @Operation(summary = "删除lecturer")
-    @DeleteMapping("/lecturer")
+    @DeleteMapping("/admin/lecturer")
+    @PreAuthorize("hasRole('ADMIN')")
     public Result deleteLecturer(@RequestBody Lecturer lecturer){
         int i = lecturerMapper.deleteById(lecturer);
         if ( i > 0){
