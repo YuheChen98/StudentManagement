@@ -13,9 +13,11 @@ import java.util.Random;
 
 @Service
 public class LecturerService {
+
+    private static final String LECTURER_INITIAL = "LC";
+
     @Autowired
     private LecturerMapper lecturerMapper;
-    final String LECTURERINITIAL = "LC";
     public Lecturer createLecturer(Lecturer lecturer){
         String lecturerId = generateLecturerId();
         boolean isUnique = false;
@@ -35,8 +37,8 @@ public class LecturerService {
     }
     private String generateLecturerId() {
         Random random = new Random();
-        int randomEight_DigitNumber = random.nextInt(100000000);
-        return LECTURERINITIAL + randomEight_DigitNumber;
+        int randomEightDigitNumber = random.nextInt(100000000);
+        return LECTURER_INITIAL + String.format("%08d", randomEightDigitNumber);
     }
     public List<Lecturer> searchLecturer(String query) {
         QueryWrapper<Lecturer> queryWrapper = new QueryWrapper<>();

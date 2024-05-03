@@ -34,4 +34,17 @@ public interface StudentExamMapper extends BaseMapper<StudentExam> {
             }
     )
     List<StudentExam> selectByExamId(String examId);
+    @Select("select * from student_exam where student_id = #{studentId}")
+    @Results(
+            {
+                    @Result(column = "student_id",property = "studentId"),
+                    @Result(column = "if_submit",property = "ifSubmit"),
+                    @Result(column = "if_suspend",property = "ifSuspend"),
+                    @Result(column = "mark",property = "mark"),
+                    @Result(column = "exam_id",property = "examCoursework",javaType = ExamCoursework.class,
+                            one = @One(select = "com.example.studentmanagement.mapper.ProgrammeMapper.ExamCourseworkMapper.selectByExamId")
+                    )
+            }
+    )
+    List<StudentExam> selectByStudentId(String studentId);
 }

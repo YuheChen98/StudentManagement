@@ -11,6 +11,10 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+
+/**
+ * Controller class providing API endpoints for managing administrators within the student management system.
+ */
 @RestController
 @CrossOrigin
 public class AdministratorController {
@@ -18,7 +22,16 @@ public class AdministratorController {
     private AdministratorMapper administratorMapper;
     @Autowired
     private AdministratorService administratorService;
-    @Operation(summary = "创建administrator")
+
+
+
+    /**
+     * Creates a new administrator and adds it to the database.
+     *
+     * @param administrator the administrator to be added
+     * @return a Result object containing the newly created administrator, or an error message if creation failed
+     */
+    @Operation(summary = "Create an administrator")
     @PostMapping("/admin/administrator")
     @PreAuthorize("hasRole('ADMIN')")
     public Result add(@RequestBody Administrator administrator){
@@ -29,27 +42,60 @@ public class AdministratorController {
             return Result.error().message("Create administrator failed");
         }
     }
-    @Operation(summary = "查询全部administrator列表")
+
+
+
+    /**
+     * Retrieves a list of all administrators.
+     *
+     * @return a list of all registered administrators
+     */
+    @Operation(summary = "List all administrators")
     @GetMapping("/admin/administrator")
     @PreAuthorize("hasRole('ADMIN')")
     public List administrator() {
         return administratorMapper.selectList(null);
     }
 
-    @Operation(summary = "根据id或name查询administrator信息列表")
+
+
+    /**
+     * Searches for administrators based on an ID or name.
+     *
+     * @param query the ID or name to search for
+     * @return a list of administrators matching the search criteria
+     */
+    @Operation(summary = "Search for administrators by ID or name")
     @GetMapping("/admin/administrator/{query}")
     @PreAuthorize("hasRole('ADMIN')")
     public List<Administrator> searchAdministrator(@PathVariable String query){
         return administratorService.searchAdministrator(query);
     }
 
-    @Operation(summary = "查询单个administrator信息")
+
+
+    /**
+     * Retrieves information about a specific administrator.
+     *
+     * @param administrator the administrator whose details are to be retrieved
+     * @return an administrator object
+     */
+    @Operation(summary = "Get information of a single administrator")
     @GetMapping("/admin/administratorInfo")
     @PreAuthorize("hasRole('ADMIN')")
     public Administrator getAdministratorById(@RequestBody Administrator administrator) {
         return administratorMapper.selectById(administrator.getAdminId());
     }
-    @Operation(summary = "更新administrator信息")
+
+
+
+    /**
+     * Updates the information of an existing administrator.
+     *
+     * @param administrator the administrator with updated details
+     * @return a Result object indicating success or failure
+     */
+    @Operation(summary = "Update an administrator's information")
     @PutMapping("/admin/administrator")
     @PreAuthorize("hasRole('ADMIN')")
     public Result updateAdministrator(@RequestBody Administrator administrator){
@@ -60,7 +106,16 @@ public class AdministratorController {
             return Result.error().message("Update administrator failed");
         }
     }
-    @Operation(summary = "删除administrator")
+
+
+
+    /**
+     * Deletes an administrator from the database.
+     *
+     * @param administrator the administrator to be deleted
+     * @return a Result object indicating success or failure
+     */
+    @Operation(summary = "Delete an administrator")
     @DeleteMapping("/admin/administrator")
     @PreAuthorize("hasRole('ADMIN')")
     public Result deleteAdministrator(@RequestBody Administrator administrator){
@@ -71,6 +126,5 @@ public class AdministratorController {
             return Result.error().message("Delete administrator failed");
         }
     }
-
 
 }

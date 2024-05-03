@@ -9,18 +9,30 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * Service class for handling tutor-related operations within the student management system.
+ */
 @Service
 public class TutorService {
+    private static final String TUTOR_INITIAL = "TU";
+
     @Autowired
     private TutorMapper tutorMapper;
-    final String TUTORINITIAL = "TU";
+
+    /**
+     * Creates and saves a new tutor with a unique tutor ID in the database.
+     * The tutor ID is generated to ensure it does not already exist in the database.
+     *
+     * @param tutor the tutor object to be created and saved
+     * @return the newly created tutor if successful, null if the creation failed
+     */
     public Tutor createTutor(Tutor tutor){
         String tutorId = generateTutorId();
         boolean isUnique = false;
         while (!isUnique) {
             isUnique = !(tutorMapper.countTutorById(tutorId) > 0);
             if (!isUnique) {
-                tutorId = generateTutorId();
+                tutorId = generateTutorId(); // Regenerate the ID if it's not unique
             }
         }
         tutor.setTutorId(tutorId);
@@ -31,12 +43,28 @@ public class TutorService {
             return null;
         }
     }
+
+
+    /**
+     * Generates a unique tutor ID using a random eight-digit number prefixed by a defined initial.
+     *
+     * @return a unique tutor ID
+     */
     private String generateTutorId() {
         Random random = new Random();
-        int randomEight_DigitNumber = random.nextInt(100000000);
-        return TUTORINITIAL + randomEight_DigitNumber;
+        int randomEightDigitNumber = random.nextInt(100000000);
+        return TUTOR_INITIAL + String.format("%08d", randomEightDigitNumber);
     }
 
+
+
+    /**
+     * Searches for tutors based on a given query. The query can be a tutor ID or a name.
+     * If the query contains a space, it assumes the format "firstName lastName".
+     *
+     * @param query the query string used to search for tutors
+     * @return a list of tutors that match the search criteria
+     */
     public List<Tutor> searchTutor(String query) {
         QueryWrapper<Tutor> queryWrapper = new QueryWrapper<>();
         if (query.contains(" ")) {

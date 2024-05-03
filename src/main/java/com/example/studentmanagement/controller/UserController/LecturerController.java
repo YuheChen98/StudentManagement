@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * Controller class providing API endpoints for managing lecturers within the student management system.
+ */
 @RestController
 @CrossOrigin
 public class LecturerController {
@@ -19,58 +22,95 @@ public class LecturerController {
     @Autowired
     private LecturerService lecturerService;
 
-    @Operation(summary = "创建lecturer")
+    /**
+     * Creates and adds a new lecturer to the database.
+     *
+     * @param lecturer the lecturer to be added
+     * @return a Result object containing the newly created lecturer or an error message if creation failed
+     */
+    @Operation(summary = "Create a lecturer")
     @PostMapping("/admin/lecturer")
     @PreAuthorize("hasRole('ADMIN')")
     public Result add(@RequestBody Lecturer lecturer){
         Lecturer newLecturer = lecturerService.createLecturer(lecturer);
         if (newLecturer != null){
-            return Result.ok().data("lecturer",lecturer);
+            return Result.ok().data("lecturer", newLecturer);
         } else {
             return Result.error().message("Create lecturer failed");
         }
     }
-    @Operation(summary = "查询全部lecturer列表")
+
+    /**
+     * Retrieves a list of all lecturers.
+     *
+     * @return a list of all registered lecturers
+     */
+    @Operation(summary = "List all lecturers")
     @GetMapping("/admin/lecturer")
     @PreAuthorize("hasRole('ADMIN')")
-    public List lecturer() {
+    public List<Lecturer> listLecturers() {
         return lecturerMapper.selectAllLecturer();
     }
 
-    @Operation(summary = "根据id或name查询lecturer信息列表")
+    /**
+     * Searches for lecturers based on the provided query, which could be an ID or a name.
+     *
+     * @param query the query string used for searching
+     * @return a list of lecturers matching the search criteria
+     */
+    @Operation(summary = "Search for lecturers by ID or name")
     @GetMapping("/admin/lecturer/{query}")
     @PreAuthorize("hasRole('ADMIN')")
     public List<Lecturer> searchLecturer(@PathVariable String query){
         return lecturerService.searchLecturer(query);
     }
 
-    @Operation(summary = "查询单个lecturer信息")
+    /**
+     * Retrieves detailed information about a specific lecturer by their lecturer ID.
+     *
+     * @param lecturer the lecturer whose details are to be retrieved
+     * @return the detailed information of the requested lecturer
+     */
+    @Operation(summary = "Get detailed information for one lecturer")
     @GetMapping("/admin/lecturerInfo")
     @PreAuthorize("hasRole('ADMIN')")
     public Lecturer getLecturerById(@RequestBody Lecturer lecturer) {
         return lecturerMapper.selectById(lecturer.getLecturerId());
     }
-    @Operation(summary = "更新lecturer信息")
+
+    /**
+     * Updates the information of an existing lecturer.
+     *
+     * @param lecturer the lecturer object with updated details
+     * @return a Result object indicating the success or failure of the update
+     */
+    @Operation(summary = "Update a lecturer's information")
     @PutMapping("/admin/lecturer")
     @PreAuthorize("hasRole('ADMIN')")
     public Result updateLecturer(@RequestBody Lecturer lecturer){
         int i = lecturerMapper.updateById(lecturer);
-        if ( i > 0){
-            return Result.ok().data("lecturer",lecturer);
+        if (i > 0) {
+            return Result.ok().data("lecturer", lecturer);
         } else {
             return Result.error().message("Update lecturer failed");
         }
     }
-    @Operation(summary = "删除lecturer")
+
+    /**
+     * Deletes a lecturer from the database.
+     *
+     * @param lecturer the lecturer to be deleted
+     * @return a Result object indicating the success or failure of the deletion
+     */
+    @Operation(summary = "Delete a lecturer")
     @DeleteMapping("/admin/lecturer")
     @PreAuthorize("hasRole('ADMIN')")
     public Result deleteLecturer(@RequestBody Lecturer lecturer){
         int i = lecturerMapper.deleteById(lecturer);
-        if ( i > 0){
-            return Result.ok().data("lecturer",lecturer);
+        if (i > 0) {
+            return Result.ok().data("lecturer", lecturer);
         } else {
             return Result.error().message("Delete lecturer failed");
         }
     }
-
 }
