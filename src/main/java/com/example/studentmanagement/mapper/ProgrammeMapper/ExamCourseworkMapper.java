@@ -12,6 +12,9 @@ import java.util.List;
 
 @Mapper
 public interface ExamCourseworkMapper extends BaseMapper<ExamCoursework> {
+    @Insert("insert into exam_coursework values (#{examId},#{module.moduleId},#{requirementDetails},#{deadline},#{ifExam})")
+    int add(ExamCoursework examCoursework);
+
     @Select("select * from exam_coursework where module_id = #{moduleId}")
     List<ExamCoursework> selectByModuleId(String moduleId);
 

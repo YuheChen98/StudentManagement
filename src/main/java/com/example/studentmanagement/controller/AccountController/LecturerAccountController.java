@@ -37,18 +37,16 @@ public class LecturerAccountController {
         return (String) authentication.getPrincipal();
     }
     @Operation(summary = "lecturer profile")
-    @GetMapping("/profile")
+    @GetMapping("/lecturer/profile")
     @PreAuthorize("hasRole('LECTURER')")
     public Result getProfile() {
-//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-//        String lecturerId = (String) authentication.getPrincipal();
         String lecturerId = getCurrentLecturerId();
         Lecturer lecturer = lecturerMapper.selectById(lecturerId);
         return  Result.ok().data("lecturer",lecturer);
     }
 
     @Operation(summary = "all modules of one lecturer")
-    @GetMapping("/lecturer-modules")
+    @GetMapping("/lecturer/modules")
     @PreAuthorize("hasRole('LECTURER')")
     public Result getAllModules() {
         String lecturerId = getCurrentLecturerId();
@@ -58,13 +56,13 @@ public class LecturerAccountController {
     }
 
     @Operation(summary = "select one module")
-    @GetMapping("/lecture-module")
+    @GetMapping("/lecturer/module")
     @PreAuthorize("hasRole('LECTURER')")
     public Module getModule(@RequestBody Module module) {
         return moduleMapper.selectByModuleId(module.getModuleId());
     }
     @Operation(summary = "update module")
-    @PutMapping("/lecturer-module")
+    @PutMapping("/lecturer/module")
     @PreAuthorize("hasRole('LECTURER')")
     public Result updateModule(@RequestBody Module module){
         int i = moduleMapper.updateById(module);
@@ -76,10 +74,10 @@ public class LecturerAccountController {
     }
 
     @Operation(summary = "create exam or coursework")
-    @PostMapping("/exam")
+    @PostMapping("/lecturer/exam")
     @PreAuthorize("hasRole('LECTURER')")
     public Result createExam(@RequestBody ExamCoursework examCoursework){
-        int i = examCourseworkMapper.insert(examCoursework);
+        int i = examCourseworkMapper.add(examCoursework);
         if ( i > 0){
             return Result.ok().data("examCoursework",examCoursework);
         } else {
@@ -88,17 +86,17 @@ public class LecturerAccountController {
     }
 
     @Operation(summary = "get exam of student")
-    @GetMapping("/exam")
+    @GetMapping("/lecturer/examInfo")
     @PreAuthorize("hasRole('LECTURER')")
     public List<StudentExam> getStudentExam(@RequestBody StudentExam studentExam) {
         return studentExamMapper.selectByExamId(studentExam.getExamCoursework().getExamId());
     }
 
     @Operation(summary = "set exam status of student")
-    @PostMapping("/student-exam")
+    @PostMapping("/lecturer/examInfo")
     @PreAuthorize("hasRole('LECTURER')")
     public Result setStudentExam(@RequestBody StudentExam studentExam){
-        int i = studentExamMapper.insert(studentExam);
+        int i = studentExamMapper.add(studentExam);
         if ( i > 0){
             return Result.ok().data("studentExam",studentExam);
         } else {
@@ -107,10 +105,10 @@ public class LecturerAccountController {
     }
 
     @Operation(summary = "update exam status of student")
-    @PutMapping("/student-exam")
+    @PutMapping("/lecturer/examInfo")
     @PreAuthorize("hasRole('LECTURER')")
     public Result updateStudentExam(@RequestBody StudentExam studentExam){
-        int i = studentExamMapper.updateById(studentExam);
+        int i = studentExamMapper.update(studentExam);
         if ( i > 0){
             return Result.ok().data("studentExam",studentExam);
         } else {

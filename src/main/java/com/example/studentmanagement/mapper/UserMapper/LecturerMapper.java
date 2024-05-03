@@ -23,7 +23,7 @@ public interface LecturerMapper extends BaseMapper<Lecturer> {
                     @Result(column = "last_name",property = "lastName"),
                     @Result(column = "email",property = "email"),
                     @Result(column = "lecturer_id",property = "modules",javaType = List.class,
-                            many = @Many(select = "com.example.studentmanagement.mapper.ProgrammeMapper.ModuleMapper.selectById"))
+                            many = @Many(select = "com.example.studentmanagement.mapper.ProgrammeMapper.ModuleMapper.selectByLecturerId"))
             }
     )
     List<Lecturer> selectAllLecturer();
@@ -38,7 +38,7 @@ public interface LecturerMapper extends BaseMapper<Lecturer> {
                     @Result(column = "last_name",property = "lastName"),
                     @Result(column = "email",property = "email"),
                     @Result(column = "lecturer_id",property = "modules",javaType = List.class,
-                            many = @Many(select = "com.example.studentmanagement.mapper.ProgrammeMapper.ModuleMapper.selectById"))
+                            many = @Many(select = "com.example.studentmanagement.mapper.ProgrammeMapper.ModuleMapper.selectByLecturerId"))
             }
     )
     Lecturer selectById(String lecturerId);

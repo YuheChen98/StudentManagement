@@ -50,7 +50,7 @@ public class StudentAccountController {
     }
 
     @Operation(summary = "select one module")
-    @GetMapping("/student-module")
+    @GetMapping("/student/module")
     @PreAuthorize("hasRole('STUDENT')")
     public Module getModule(@RequestBody Module module) {
         return moduleMapper.selectByModuleId(module.getModuleId());

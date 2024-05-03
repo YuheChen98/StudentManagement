@@ -3,12 +3,18 @@ package com.example.studentmanagement.mapper.ProgrammeMapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.example.studentmanagement.entity.Programme.Module;
 import com.example.studentmanagement.entity.User.Lecturer;
+import com.example.studentmanagement.entity.User.Student;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
 @Mapper
 public interface ModuleMapper extends BaseMapper<Module> {
+    @Insert("insert into module values (#{moduleId},#{syllabus},#{semester},#{timeEveryWeek},#{lecturer.lecturerId})")
+    int add(Module module);
+
+    @Select("select * from module where lecturer_id=#{lecturerId}")
+    List<Module> selectByLecturerId(String lecturerId);
     @Select("select * from module")
     @Results(
             {
