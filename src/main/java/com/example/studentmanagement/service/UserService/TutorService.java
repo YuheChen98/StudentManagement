@@ -14,7 +14,7 @@ import java.util.Random;
  */
 @Service
 public class TutorService {
-    private static final String TUTOR_INITIAL = "TU";
+    private static final String TUTOR_INITIAL = "PT";
 
     @Autowired
     private TutorMapper tutorMapper;

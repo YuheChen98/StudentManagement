@@ -25,7 +25,6 @@ public class SecurityConfig {
                 .requestMatchers("/lecturer/**").hasRole("LECTURER")
                 .requestMatchers("/student/**").hasRole("STUDENT")
                 .anyRequest().authenticated()
-                //.anyRequest().permitAll()
         );
         http.addFilterBefore(new JwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
         return http.build();

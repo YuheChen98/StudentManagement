@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.example.studentmanagement.entity.Programme.ProgrammeModule;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -20,8 +21,8 @@ public class Student {
     private String lastName;
     private String email;
     private String information;
-    private Date startTime;
-    private Date endTime;
+    private LocalDate startTime;
+    private LocalDate endTime;
     private Boolean ifWithdraw;
     @TableField(exist = false)
     private Tutor tutor;
@@ -129,7 +130,7 @@ public class Student {
      * Returns the start date of the student's enrollment in the programme.
      * @return the start date of enrollment
      */
-    public Date getStartTime() {
+    public LocalDate getStartTime() {
         return startTime;
     }
 
@@ -137,7 +138,7 @@ public class Student {
      * Sets the start date of the student's enrollment in the programme.
      * @param startTime the start date to set
      */
-    public void setStartTime(Date startTime) {
+    public void setStartTime(LocalDate startTime) {
         this.startTime = startTime;
     }
 
@@ -145,7 +146,7 @@ public class Student {
      * Returns the end date of the student's enrollment in the programme.
      * @return the end date of enrollment
      */
-    public Date getEndTime() {
+    public LocalDate getEndTime() {
         return endTime;
     }
 
@@ -153,7 +154,7 @@ public class Student {
      * Sets the end date of the student's enrollment in the programme.
      * @param endTime the end date to set
      */
-    public void setEndTime(Date endTime) {
+    public void setEndTime(LocalDate endTime) {
         this.endTime = endTime;
     }
 

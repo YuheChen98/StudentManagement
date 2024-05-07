@@ -63,4 +63,13 @@ public interface ModuleMapper extends BaseMapper<Module> {
                     many = @Many(select = "com.example.studentmanagement.mapper.ProgrammeMapper.ExamCourseworkMapper.selectByModuleId"))
     })
     Module selectByModuleId(String moduleId);
+
+
+    /**
+     * Retrieves all modules that are within same year and same programme of the module that represented by provided module Id.
+     * @param moduleId the unique identifier of the module
+     * @return a list of all same year and same programme modules
+     */
+    @Select("select * from module where SUBSTRING_INDEX(module_id,'-',2) = SUBSTRING_INDEX(#{moduleId},'-',2)")
+    List<Module> selectSameYearModuleByModuleId(String moduleId);
 }
