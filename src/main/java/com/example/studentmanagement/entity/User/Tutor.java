@@ -9,6 +9,8 @@ import java.util.List;
 
 /**
  * Represents a tutor within the student management system.
+ * @author Yuhe Chen
+ * date: May 9th 2024
  */
 public class Tutor {
     @TableId

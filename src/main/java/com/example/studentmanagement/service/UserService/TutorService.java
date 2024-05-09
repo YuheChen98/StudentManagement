@@ -11,6 +11,8 @@ import java.util.Random;
 
 /**
  * Service class for handling tutor-related operations within the student management system.
+ * @author Yuhe Chen
+ * date: May 9th 2024
  */
 @Service
 public class TutorService {

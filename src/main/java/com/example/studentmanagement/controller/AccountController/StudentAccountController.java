@@ -20,6 +20,8 @@ import java.util.List;
 /**
  * REST controller for managing student accounts and their academic records within the student management system.
  * Provides endpoints for students to access their profiles, modules, and exam results.
+ * @author Yuhe Chen
+ * date: May 9th 2024
  */
 @RestController
 @CrossOrigin

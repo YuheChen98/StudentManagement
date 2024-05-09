@@ -11,6 +11,8 @@ import java.util.List;
 /**
  * Represents an academic programme within the student management system.
  * Includes comprehensive details about the programme such as its duration, content, entry requirements, and associated fees.
+ * @author Yuhe Chen
+ * date: May 9th 2024
  */
 public class Programme {
     @TableId

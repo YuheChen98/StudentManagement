@@ -9,6 +9,8 @@ import java.util.List;
 /**
  * Represents a lecturer within the student management system.
  * This class includes details about the lecturer and their associated teaching modules.
+ * @author Yuhe Chen
+ * date: May 9th 2024
  */
 public class Lecturer {
     @TableId

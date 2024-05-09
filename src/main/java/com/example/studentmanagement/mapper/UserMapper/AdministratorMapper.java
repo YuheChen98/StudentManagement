@@ -9,6 +9,8 @@ import org.apache.ibatis.annotations.Select;
 /**
  * Mapper interface for the Administrator entity.
  * Provides SQL operations through MyBatis for Administrator data manipulation.
+ * @author Yuhe Chen
+ * date: May 9th 2024
  */
 @Mapper
 public interface AdministratorMapper extends BaseMapper<Administrator> {

@@ -8,6 +8,8 @@ import java.util.List;
 
 /**
  * Mapper interface for the Programme entity, providing database interaction methods to manage programmes.
+ * @author Yuhe Chen
+ * date: May 9th 2024
  */
 @Mapper
 public interface ProgrammeMapper extends BaseMapper<Programme> {

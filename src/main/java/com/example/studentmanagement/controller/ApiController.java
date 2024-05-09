@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.*;
 /**
  * Provides RESTful API endpoints for managing user authentication and information retrieval
  * in a student management system.
+ * @author Yuhe Chen
+ * date: May 9th 2024
  */
 @RestController
 @RequestMapping("/api")

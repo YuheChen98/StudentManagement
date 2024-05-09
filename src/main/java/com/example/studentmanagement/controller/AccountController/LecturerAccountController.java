@@ -21,6 +21,8 @@ import java.util.List;
 /**
  * REST controller for managing lecturer accounts and their academic activities within the student management system.
  * Provides endpoints for lecturers to access their profiles, manage modules, and oversee student assessments.
+ * @author Yuhe Chen
+ * date: May 9th 2024
  */
 @RestController
 @CrossOrigin

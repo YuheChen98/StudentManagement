@@ -8,6 +8,8 @@ import java.util.List;
 
 /**
  * Mapper interface for the ProgrammeModule entity, which provides methods for database operations related to linking programmes with their respective modules.
+ * @author Yuhe Chen
+ * date: May 9th 2024
  */
 @Mapper
 public interface ProgrammeModuleMapper extends BaseMapper<ProgrammeModule> {

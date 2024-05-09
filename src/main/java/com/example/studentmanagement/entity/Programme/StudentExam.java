@@ -6,6 +6,8 @@ import com.baomidou.mybatisplus.annotation.TableId;
 /**
  * Represents a student's exam or coursework record within the student management system.
  * This class stores information about a specific exam or coursework assigned to a student, including submission status and grades.
+ * @author Yuhe Chen
+ * date: May 9th 2024
  */
 public class StudentExam {
     @TableId

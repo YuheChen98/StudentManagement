@@ -11,6 +11,8 @@ import java.util.Random;
 
 /**
  * Service class for handling administrator operations.
+ * @author Yuhe Chen
+ * date: May 9th 2024
  */
 @Service
 public class AdministratorService {

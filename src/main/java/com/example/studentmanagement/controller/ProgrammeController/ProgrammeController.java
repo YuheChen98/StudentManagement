@@ -17,6 +17,8 @@ import java.util.List;
 /**
  * REST controller for managing academic programmes within the student management system.
  * Provides endpoints for CRUD operations on programmes and related entities.
+ * @author Yuhe Chen
+ * date: May 9th 2024
  */
 @RestController
 @CrossOrigin

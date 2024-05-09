@@ -8,6 +8,8 @@ import java.util.List;
 
 /**
  * Mapper interface for the Lecturer entity, providing methods for database operations.
+ * @author Yuhe Chen
+ * date: May 9th 2024
  */
 @Mapper
 public interface LecturerMapper extends BaseMapper<Lecturer> {

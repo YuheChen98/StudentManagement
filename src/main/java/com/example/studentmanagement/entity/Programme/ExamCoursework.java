@@ -7,6 +7,8 @@ import java.util.Date;
 /**
  * Represents an exam or coursework within the student management system.
  * This class holds details about specific assessments, including deadlines, requirements, and associated modules.
+ * @author Yuhe Chen
+ * date: May 9th 2024
  */
 public class ExamCoursework {
     @TableId

@@ -11,6 +11,8 @@ import java.util.List;
 
 /**
  * Represents a student within the student management system.
+ * @author Yuhe Chen
+ * date: May 9th 2024
  */
 public class Student {
     @TableId

@@ -4,6 +4,8 @@ import com.baomidou.mybatisplus.annotation.TableId;
 
 /**
  * Represents an administrator in the student management system.
+ * @author Yuhe Chen
+ * date: May 9th 2024
  */
 public class Administrator {
     @TableId

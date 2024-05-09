@@ -11,6 +11,8 @@ import java.util.List;
 
 /**
  * Mapper interface for Student entity providing database interaction operations.
+ * @author Yuhe Chen
+ * date: May 9th 2024
  */
 @Mapper
 public interface StudentMapper extends BaseMapper<Student> {

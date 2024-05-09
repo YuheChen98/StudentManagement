@@ -8,6 +8,8 @@ import java.util.List;
 /**
  * Represents an academic module within the student management system.
  * This class includes details about the module such as its syllabus, timing, associated lecturer, and evaluations.
+ * @author Yuhe Chen
+ * date: May 9th 2024
  */
 public class Module {
     @TableId

@@ -12,6 +12,8 @@ import java.util.List;
 
 /**
  * Service class for handling operations related to academic programmes and modules within the student management system.
+ * @author Yuhe Chen
+ * date: May 9th 2024
  */
 @Service
 public class ProgrammeService {

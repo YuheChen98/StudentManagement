@@ -8,6 +8,8 @@ import java.util.List;
 
 /**
  * Mapper interface for the ExamCoursework entity, providing database interaction methods to manage exam and coursework records.
+ * @author Yuhe Chen
+ * date: May 9th 2024
  */
 @Mapper
 public interface ExamCourseworkMapper extends BaseMapper<ExamCoursework> {

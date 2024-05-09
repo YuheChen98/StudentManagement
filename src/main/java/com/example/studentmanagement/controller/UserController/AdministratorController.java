@@ -14,6 +14,8 @@ import java.util.List;
 
 /**
  * Controller class providing API endpoints for managing administrators within the student management system.
+ * @author Yuhe Chen
+ * date: May 9th 2024
  */
 @RestController
 @CrossOrigin

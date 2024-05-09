@@ -5,6 +5,8 @@ import com.baomidou.mybatisplus.annotation.TableId;
 /**
  * Represents the association between a programme and its academic modules within the student management system.
  * This entity links programmes with their respective modules.
+ * @author Yuhe Chen
+ * date: May 9th 2024
  */
 public class ProgrammeModule {
 

@@ -10,6 +10,8 @@ import java.util.List;
 
 /**
  * Mapper interface for the Tutor entity, providing database interaction methods to manage tutors.
+ * @author Yuhe Chen
+ * date: May 9th 2024
  */
 @Mapper
 public interface TutorMapper extends BaseMapper<Tutor> {

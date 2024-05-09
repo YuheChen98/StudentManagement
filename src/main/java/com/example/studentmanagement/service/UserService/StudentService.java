@@ -14,6 +14,8 @@ import java.util.Random;
 
 /**
  * Service class for handling student-related business processes.
+ * @author Yuhe Chen
+ * date: May 9th 2024
  */
 @Service
 public class StudentService {

@@ -9,6 +9,8 @@ import java.util.List;
 
 /**
  * Mapper interface for the Module entity, providing methods for database operations related to academic modules.
+ * @author Yuhe Chen
+ * date: May 9th 2024
  */
 @Mapper
 public interface ModuleMapper extends BaseMapper<Module> {
